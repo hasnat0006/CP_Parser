@@ -41,7 +41,7 @@ All the input and expected files are stored in my `~/ccode` folder and I compile
 autocmd FileType cpp map <F5> :w<CR>:!clear && bash ~/ccode/runtests.sh %<<CR>
 ```
 
-For creating new testcase I have `newtest.sh` file
+For creating new testcase I have `newtest.sh` file. I use `ctrl + d` to take expected value and again `ctrl + d` will terminate the bash script.
 
 ```bash
 #!/bin/bash
@@ -52,7 +52,7 @@ for i in incp*.txt; do
 done;
 
 echo -e "\e[4mInput $cnt\e[0m"
-cat > tempInp.txt 
+cat > tempInp.txt
 
 echo -e "\e[4mExpected $cnt\e[0m"
 cat > tempExp.txt
