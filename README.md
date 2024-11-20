@@ -15,6 +15,8 @@ I use vim and I code in `~/ccode` folder where I written a bash script named `ru
 ```bash
 #!/bin/bash
 
+reset
+
 g++ $1.cpp -Wall -DONPC -o $1
 
 cnt=0
