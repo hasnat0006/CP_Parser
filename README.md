@@ -15,6 +15,8 @@ I use vim and I code in `~/ccode` folder where I written a bash script named `ru
 ```bash
 #!/bin/bash
 
+reset
+
 g++ $1.cpp -Wall -DONPC -o $1
 
 cnt=0
@@ -50,11 +52,13 @@ For creating new testcase I have `newtest.sh` file. I use `ctrl + d` to take exp
 
 cnt=0
 for i in incp*.txt; do
-	cnt=$((cnt + 1));
+	if [ -e "$i" ]; then
+		cnt=$((cnt + 1));
+	fi
 done;
 
 echo -e "\e[4mInput $cnt\e[0m"
-cat > tempInp.txt 
+cat > tempInp.txt
 
 echo -e "\e[4mExpected $cnt\e[0m"
 cat > tempExp.txt
@@ -67,4 +71,27 @@ I have created a shorcut for creating a new testcase using `F4` in vim.
 
 ```vimrc
 autocmd FileType cpp map <F4> :!clear && bash ~/ccode/newtest.sh %<<CR>
+```
+
+To run this project on startup your device you can use `pm2`
+
+```bash
+# Installing pm2
+npm install -g pm2 # may require sudo
+
+# Starting the app
+pm2 start ~/Projects/red.js
+pm2 save    # saves the running processes
+            # if not saved, pm2 will forget
+            # the running apps on next boot
+
+
+# check status
+pm2 list
+
+# IMPORTANT: If you want pm2 to start on system boot
+pm2 startup # starts pm2 on computer boot
+
+# Remove init script via
+pm2 unstartup systemd
 ```
