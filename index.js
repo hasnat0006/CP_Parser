@@ -6,8 +6,8 @@ const os = require('os')
 const { exec, execSync } = require('child_process')
 require('dotenv').config()
 
-const homeDirectory = os.homedir()
-const directoryPath = path.join(homeDirectory, process.env.CP_FOLDER)
+// const homeDirectory = os.homedir()
+const directoryPath = path.join(process.env.CP_HOME, process.env.CP_FOLDER);
 // const directoryPath = ".";
 
 const port = 10043

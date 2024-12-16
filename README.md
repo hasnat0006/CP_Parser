@@ -6,7 +6,7 @@ This is an example on how to retrieve parsed problem data from [Competitive Comp
 
 1. Clone this repository and `cd` into it.
 2. Run `npm install`.
-3. Customize `CP_FOLDER` in `.env` where you want to store and input and expected files.
+3. Customize `CP_HOME` (like `$HOME`, `~` for ubuntu or `F:`, `C:` for windows) `CP_FOLDER` (I use `ccode` as my cp folder) in `.env` where you want to store and input and expected files.
 4. Run `npm start`.
 5. Go to a problem like [this](http://codeforces.com/problemset/problem/1/A) one, click on the green plus icon and look at the terminal where you ran `npm start`.
 
@@ -57,10 +57,10 @@ for i in incp*.txt; do
 	fi
 done;
 
-echo -e "\e[4mInput $cnt\e[0m"
+echo -e "\e[4mInput $cnt (Ctrl + D to save and exit)\e[0m"
 cat > tempInp.txt
 
-echo -e "\e[4mExpected $cnt\e[0m"
+echo -e "\e[4mExpected $cnt (Ctrl + D to save and exit)\e[0m"
 cat > tempExp.txt
 
 cat tempInp.txt > incp$cnt.txt
@@ -80,7 +80,7 @@ To run this project on startup your device you can use `pm2`
 npm install -g pm2 # may require sudo
 
 # Starting the app
-pm2 start ~/Projects/red.js
+pm2 start index.js --name cpParser
 pm2 save    # saves the running processes
             # if not saved, pm2 will forget
             # the running apps on next boot
